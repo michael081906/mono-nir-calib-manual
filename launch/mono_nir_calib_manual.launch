@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="mono_nir_calib_manual_" pkg="mono_nir_calib_manual" type="mono_nir_calib_manual_node"> 
+		<param name="x_launch" value="2"/>
+		<param name="y_launch" value="2"/>
+		<param name="z_launch" value="0"/>
+		<param name="rx_launch" value="0.0"/>
+		<param name="ry_launch" value="0.0"/>
+		<param name="rz_launch" value="0.0"/>
+
+</node>
+
+</launch>
