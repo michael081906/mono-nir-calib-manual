@@ -39,15 +39,27 @@ int main(int argc, char** argv){
   server.setCallback(f);
   int loop_freq = 10;
   ros::Rate loop_rate(loop_freq);
+  double x = 0.0; 
+  double y = 0.0;
+  double z = 0.0; 
+  double qx = 0.0;
+  double qy = 0.0;
+  double qz = 0.0;
+  double qw = 0.0; 
 
   while(ros::ok())
   {
   tf::Transform transform;
-  transform.setOrigin( tf::Vector3(tx_ini + tx, ty_ini + ty, tz_ini + tz) );
+  x = tx_ini + tx;
+  y = ty_ini + ty;
+  z = tz_ini + tz;
+  transform.setOrigin( tf::Vector3(x, y, z) );
   tf::Quaternion q;
   q.setRPY(rx_ini + rx, ry_ini + ry, rz_ini + rz);
   transform.setRotation(q);
-  br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "mono", "nir"));
+  br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "stage", "mono"));
+  std::cout << x<< " "<< y << " "<< z<< " "<< q.x() << " " <<q.y()<< " "<< q.z() << " " << q.w()<<std::endl;		
+
   loop_rate.sleep();
   ros::spinOnce();
 }
