@@ -7,6 +7,8 @@
 double tx,ty,tz,rx,ry,rz;
 double tx_ini,ty_ini,tz_ini,rx_ini,ry_ini,rz_ini;
 double PI = 3.14159;
+std::string frame_a;
+std::string frame_b;
 
 void callback_d(mono_nir_calib_manual::mono_nir_calib_cfgConfig &config, uint32_t level) {
  ROS_INFO("Reconfigure Request: %f %f %f - %f %f %f",
@@ -26,6 +28,8 @@ int main(int argc, char** argv){
   ros::init(argc, argv, "mono_nir_calib_manual");
   ros::NodeHandle node;
   ros::NodeHandle home("~");
+  home.getParam("frame_a", frame_a);
+  home.getParam("frame_b", frame_b);
   home.getParam("rx_launch", rx_ini);
   home.getParam("ry_launch", ry_ini);
   home.getParam("rz_launch", rz_ini);
@@ -57,7 +61,7 @@ int main(int argc, char** argv){
   tf::Quaternion q;
   q.setRPY(rx_ini + rx, ry_ini + ry, rz_ini + rz);
   transform.setRotation(q);
-  br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "stage", "mono"));
+  br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), frame_a, frame_b));
   std::cout << x<< " "<< y << " "<< z<< " "<< q.x() << " " <<q.y()<< " "<< q.z() << " " << q.w()<<std::endl;		
 
   loop_rate.sleep();
