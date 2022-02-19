@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="checkerboard_nir_calib_manual_" pkg="mono_nir_calib_manual" type="mono_nir_calib_manual_checker_basler_node" output="screen"> 
+        <param name="frame_a" type="str" value="checkerboard" />
+		<param name="frame_b" type="str" value="basler" />
+
+		<param name = "x_launch"  value = "0.394662"/>
+		<param name = "y_launch"  value = "-0.0112554"/>
+		<param name = "z_launch"  value = "0.32202"/>
+		<param name = "rx_launch" value = "0.669582"/>
+		<param name = "ry_launch" value = "0.619867"/>
+		<param name = "rz_launch" value = "-0.243559"/>
+		<param name = "rw_launch" value = "-0.328792"/>
+
+</node>
+
+</launch>

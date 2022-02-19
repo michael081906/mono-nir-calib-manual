@@ -27,3 +27,7 @@ include_directories(
 add_executable(${PROJECT_NAME}_node src/mono_nir_publish.cpp)
 add_dependencies(${PROJECT_NAME}_node ${PROJECT_NAME}_gencfg ${PROJECT_NAME}_gencpp)
 target_link_libraries(${PROJECT_NAME}_node   ${catkin_LIBRARIES} )
+
+add_executable(${PROJECT_NAME}_checker_basler_node src/checkerboard_basler_publish.cpp)
+add_dependencies(${PROJECT_NAME}_checker_basler_node ${PROJECT_NAME}_gencfg ${PROJECT_NAME}_gencpp)
+target_link_libraries(${PROJECT_NAME}_checker_basler_node   ${catkin_LIBRARIES} )
